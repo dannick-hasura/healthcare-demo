@@ -1,4 +1,4 @@
-# Healthcare demo
+# Healthcare Demo
 Healthcare database data model with federation used for SE demos
 
 ## How to Use
