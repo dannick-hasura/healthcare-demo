@@ -71,8 +71,8 @@ CREATE TABLE public.records (
     diagnosis VARCHAR(255),
     treatment VARCHAR(255),
     notes TEXT,
-    FOREIGN KEY (patient_id) REFERENCES Patients(patient_id),
-    FOREIGN KEY (doctor_id) REFERENCES Doctors(doctor_id)
+    FOREIGN KEY (patient_id) REFERENCES Patients(id),
+    FOREIGN KEY (doctor_id) REFERENCES Doctors(id)
 );
 
 CREATE INDEX ifk_appt_doctor_id ON public.appts USING btree (doctor_id);
@@ -109,21 +109,36 @@ VALUES (1, 'John', 'Doe', '1985-03-15', 'Male', '+1-123-456-7890', '123 Main St,
 
 -- Insert dummy data into Appointments table
 INSERT INTO appts (id, patient_id, doctor_id, appointment_date, appointment_status)
-VALUES (1, 1, 1, '2023-04-05 10:00:00', 'Scheduled'),
-       (2, 2, 2, '2023-04-06 14:30:00', 'Scheduled'),
-       (3, 3, 1, '2023-04-07 09:00:00', 'Scheduled'),
-       (4, 4, 3, '2023-04-08 15:30:00', 'Scheduled'),
-       (5, 5, 4, '2023-04-09 11:00:00', 'Scheduled'),
-       (6, 6, 5, '2023-04-10 16:00:00', 'Scheduled'),
-       (7, 7, 6, '2023-04-11 09:30:00', 'Scheduled'),
-       (8, 8, 1, '2023-04-12 14:00:00', 'Scheduled'),
-       (9, 9, 2, '2023-04-13 10:30:00', 'Scheduled'),
-       (10, 10, 3, '2023-04-14 15:00:00', 'Scheduled'),
-       (11, 11, 4, '2023-04-15 11:30:00', 'Scheduled'),
-       (12, 12, 5, '2023-04-16 16:30:00', 'Scheduled'),
-       (13, 13, 6, '2023-04-17 09:45:00', 'Scheduled'),
-       (14, 14, 1, '2023-04-18 14:15:00', 'Scheduled'),
-       (15, 15, 2, '2023-04-19 10:45:00', 'Scheduled');
+VALUES (1, 1, 1, '2023-04-05 10:00:00', 'Completed'),
+       (2, 2, 2, '2023-04-06 14:30:00', 'Completed'),
+       (3, 3, 1, '2023-04-07 09:00:00', 'Completed'),
+       (4, 4, 3, '2023-04-08 15:30:00', 'Completed'),
+       (5, 5, 4, '2023-04-09 11:00:00', 'Completed'),
+       (6, 6, 5, '2023-04-10 16:00:00', 'Completed'),
+       (7, 7, 6, '2023-04-11 09:30:00', 'Completed'),
+       (8, 8, 1, '2023-04-12 14:00:00', 'Completed'),
+       (9, 9, 2, '2023-04-13 10:30:00', 'Completed'),
+       (10, 10, 3, '2023-04-14 15:00:00', 'Cancelled'),
+       (11, 11, 4, '2023-04-15 11:30:00', 'Cancelled'),
+       (12, 12, 5, '2023-04-16 16:30:00', 'Cancelled'),
+       (13, 13, 6, '2023-04-17 09:45:00', 'Cancelled'),
+       (14, 14, 1, '2023-04-18 14:15:00', 'Cancelled'),
+       (15, 15, 2, '2023-04-19 10:45:00', 'Cancelled'),
+       (16, 1, 1, '2023-05-01 10:00:00', 'Scheduled'),
+       (17, 2, 2, '2023-05-02 14:30:00', 'Scheduled'),
+       (18, 3, 1, '2023-05-03 09:00:00', 'Scheduled'),
+       (19, 4, 3, '2023-05-04 15:30:00', 'Scheduled'),
+       (20, 5, 4, '2023-05-05 11:00:00', 'Scheduled'),
+       (21, 6, 5, '2023-05-06 16:00:00', 'Scheduled'),
+       (22, 7, 6, '2023-05-07 09:30:00', 'Scheduled'),
+       (23, 8, 1, '2023-05-08 14:00:00', 'Scheduled'),
+       (24, 9, 2, '2023-05-09 10:30:00', 'Scheduled'),
+       (25, 10, 3, '2023-05-10 15:00:00', 'Scheduled'),
+       (26, 11, 4, '2023-05-11 11:30:00', 'Scheduled'),
+       (27, 12, 5, '2023-05-12 16:30:00', 'Scheduled'),
+       (28, 13, 6, '2023-05-13 09:45:00', 'Scheduled'),
+       (29, 14, 1, '2023-05-14 14:15:00', 'Scheduled'),
+       (30, 15, 2, '2023-05-15 10:45:00', 'Scheduled');
 
 -- Insert dummy data into MedicalRecords table
 INSERT INTO records (id, patient_id, doctor_id, visit_date, diagnosis, treatment, notes)
@@ -141,4 +156,19 @@ VALUES (1, 1, 1, '2023-03-28', 'Hypertension', 'Prescribe medication and recomme
        (12, 12, 5, '2023-04-10', 'Epilepsy', 'Prescribe anti-seizure medication', 'Regular follow-ups to monitor medication effectiveness.'),
        (13, 13, 6, '2023-04-11', 'Glaucoma', 'Prescribe eye drops and schedule regular check-ups', 'Monitor intraocular pressure regularly.'),
        (14, 14, 1, '2023-04-12', 'High cholesterol', 'Prescribe medication and recommend lifestyle changes', 'Follow-up in 3 months for blood tests.'),
-       (15, 15, 2, '2023-04-13', 'Psoriasis', 'Prescribe topical treatment and phototherapy', 'Follow-up in 6 weeks to evaluate progress.');
+       (15, 15, 2, '2023-04-13', 'Psoriasis', 'Prescribe topical treatment and phototherapy', 'Follow-up in 6 weeks to evaluate progress.'),
+       (16, 1, 4, '2023-02-20', 'Seasonal allergies', 'Prescribe antihistamines', 'Use medication as needed during allergy season.'),
+       (17, 2, 5, '2023-02-22', 'Anxiety', 'Prescribe medication and recommend therapy', 'Follow-up in 1 month to assess treatment effectiveness.'),
+       (18, 3, 6, '2023-02-25', 'Cataract', 'Schedule cataract surgery', 'Follow-up after surgery for assessment and recovery.'),
+       (19, 4, 1, '2023-02-28', 'Gout', 'Prescribe medication and recommend dietary changes', 'Follow-up in 6 weeks to evaluate progress.'),
+       (20, 5, 2, '2023-03-01', 'Skin rash', 'Prescribe topical cream', 'Follow-up in 2 weeks to check for improvement.'),
+       (21, 6, 3, '2023-03-04', 'Tendinitis', 'Prescribe anti-inflammatory medication and recommend physical therapy', 'Follow-up in 3 weeks.'),
+       (22, 7, 4, '2023-03-06', 'Bronchitis', 'Prescribe antibiotics and recommend rest', 'Follow-up in 10 days if symptoms persist.'),
+       (23, 8, 5, '2023-03-09', 'Insomnia', 'Prescribe medication and recommend sleep hygiene improvements', 'Follow-up in 4 weeks to assess progress.'),
+       (24, 9, 6, '2023-03-12', 'Macular degeneration', 'Prescribe supplements and monitor progression', 'Regular follow-ups to check for vision changes.'),
+       (25, 10, 1, '2023-03-14', 'Arthritis', 'Prescribe medication and recommend physical therapy', 'Follow-up in 2 months.'),
+       (26, 11, 2, '2023-03-16', 'Rosacea', 'Prescribe topical treatment', 'Follow-up in 6 weeks to evaluate progress.'),
+       (27, 12, 3, '2023-03-19', 'Osteoporosis', 'Prescribe medication and recommend calcium and vitamin D supplements', 'Follow-up in 3 months.'),
+       (28, 13, 4, '2023-03-21', 'Influenza', 'Prescribe antiviral medication', 'Rest and hydrate; follow-up if symptoms worsen.'),
+       (29, 14, 5, '2023-03-24', 'Parkinson''s disease', 'Prescribe medication and recommend support group', 'Regular follow-ups to monitor condition.'),
+       (30, 15, 6, '2023-03-27', 'Dry eyes', 'Prescribe artificial tears and recommend lifestyle changes', 'Follow-up in 4 weeks for reassessment.');
