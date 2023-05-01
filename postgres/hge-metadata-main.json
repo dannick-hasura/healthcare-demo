@@ -1,0 +1,261 @@
+{
+   "resource_version": 13,
+   "metadata": {
+      "version": 3,
+      "sources": [],
+      "remote_schemas": [
+         {
+            "name": "appointments",
+            "definition": {
+               "url": "http://hge-appts:8080/v1/graphql",
+               "timeout_seconds": 60,
+               "customization": {},
+               "headers": [
+                  {
+                     "name": "x-hasura-admin-secret",
+                     "value": "myadminsecretkey"
+                  }
+               ],
+               "forward_client_headers": true
+            },
+            "comment": "",
+            "remote_relationships": [
+               {
+                  "relationships": [
+                     {
+                        "definition": {
+                           "to_remote_schema": {
+                              "lhs_fields": ["doctor_id"],
+                              "remote_field": {
+                                 "doctors": {
+                                    "arguments": {
+                                       "where": {
+                                          "id": {
+                                             "_eq": "$doctor_id"
+                                          }
+                                       }
+                                    }
+                                 }
+                              },
+                              "remote_schema": "doctors"
+                           }
+                        },
+                        "name": "doctor"
+                     },
+                     {
+                        "definition": {
+                           "to_remote_schema": {
+                              "lhs_fields": ["patient_id"],
+                              "remote_field": {
+                                 "patients": {
+                                    "arguments": {
+                                       "where": {
+                                          "id": {
+                                             "_eq": "$patient_id"
+                                          }
+                                       }
+                                    }
+                                 }
+                              },
+                              "remote_schema": "patients"
+                           }
+                        },
+                        "name": "patient"
+                     }
+                  ],
+                  "type_name": "appts"
+               }
+            ]
+         },
+         {
+            "name": "doctors",
+            "definition": {
+               "url": "http://hge-doctors:8080/v1/graphql",
+               "timeout_seconds": 60,
+               "customization": {},
+               "headers": [
+                  {
+                     "name": "x-hasura-admin-secret",
+                     "value": "myadminsecretkey"
+                  }
+               ],
+               "forward_client_headers": true
+            },
+            "comment": "",
+            "remote_relationships": [
+               {
+                  "relationships": [
+                     {
+                        "definition": {
+                           "to_remote_schema": {
+                              "lhs_fields": ["id"],
+                              "remote_field": {
+                                 "appts": {
+                                    "arguments": {
+                                       "where": {
+                                          "doctor_id": {
+                                             "_eq": "$id"
+                                          }
+                                       }
+                                    }
+                                 }
+                              },
+                              "remote_schema": "appointments"
+                           }
+                        },
+                        "name": "appointments"
+                     },
+                     {
+                        "definition": {
+                           "to_remote_schema": {
+                              "lhs_fields": ["id"],
+                              "remote_field": {
+                                 "records": {
+                                    "arguments": {
+                                       "where": {
+                                          "doctor_id": {
+                                             "_eq": "$id"
+                                          }
+                                       }
+                                    }
+                                 }
+                              },
+                              "remote_schema": "medical_records"
+                           }
+                        },
+                        "name": "records"
+                     }
+                  ],
+                  "type_name": "doctors"
+               }
+            ]
+         },
+         {
+            "name": "medical_records",
+            "definition": {
+               "url": "http://hge-records:8080/v1/graphql",
+               "timeout_seconds": 60,
+               "customization": {},
+               "headers": [
+                  {
+                     "name": "x-hasura-admin-secret",
+                     "value": "myadminsecretkey"
+                  }
+               ],
+               "forward_client_headers": true
+            },
+            "comment": "",
+            "remote_relationships": [
+               {
+                  "relationships": [
+                     {
+                        "definition": {
+                           "to_remote_schema": {
+                              "lhs_fields": ["doctor_id"],
+                              "remote_field": {
+                                 "doctors": {
+                                    "arguments": {
+                                       "where": {
+                                          "id": {
+                                             "_eq": "$doctor_id"
+                                          }
+                                       }
+                                    }
+                                 }
+                              },
+                              "remote_schema": "doctors"
+                           }
+                        },
+                        "name": "doctor"
+                     },
+                     {
+                        "definition": {
+                           "to_remote_schema": {
+                              "lhs_fields": ["patient_id"],
+                              "remote_field": {
+                                 "patients": {
+                                    "arguments": {
+                                       "where": {
+                                          "id": {
+                                             "_eq": "$patient_id"
+                                          }
+                                       }
+                                    }
+                                 }
+                              },
+                              "remote_schema": "patients"
+                           }
+                        },
+                        "name": "patient"
+                     }
+                  ],
+                  "type_name": "records"
+               }
+            ]
+         },
+         {
+            "name": "patients",
+            "definition": {
+               "url": "http://hge-patients:8080/v1/graphql",
+               "timeout_seconds": 60,
+               "customization": {},
+               "headers": [
+                  {
+                     "name": "x-hasura-admin-secret",
+                     "value": "myadminsecretkey"
+                  }
+               ],
+               "forward_client_headers": true
+            },
+            "comment": "",
+            "remote_relationships": [
+               {
+                  "relationships": [
+                     {
+                        "definition": {
+                           "to_remote_schema": {
+                              "lhs_fields": ["id"],
+                              "remote_field": {
+                                 "appts": {
+                                    "arguments": {
+                                       "where": {
+                                          "patient_id": {
+                                             "_eq": "$id"
+                                          }
+                                       }
+                                    }
+                                 }
+                              },
+                              "remote_schema": "appointments"
+                           }
+                        },
+                        "name": "appointments"
+                     },
+                     {
+                        "definition": {
+                           "to_remote_schema": {
+                              "lhs_fields": ["id"],
+                              "remote_field": {
+                                 "records": {
+                                    "arguments": {
+                                       "where": {
+                                          "patient_id": {
+                                             "_eq": "$id"
+                                          }
+                                       }
+                                    }
+                                 }
+                              },
+                              "remote_schema": "medical_records"
+                           }
+                        },
+                        "name": "records"
+                     }
+                  ],
+                  "type_name": "patients"
+               }
+            ]
+         }
+      ]
+   }
+}

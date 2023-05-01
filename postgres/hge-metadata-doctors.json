@@ -1,0 +1,29 @@
+{
+   "resource_version": 7,
+   "metadata": {
+      "version": 3,
+      "sources": [
+         {
+            "name": "clinic_data",
+            "kind": "postgres",
+            "tables": [
+               {
+                  "table": {
+                     "name": "doctors",
+                     "schema": "public"
+                  }
+               }
+            ],
+            "configuration": {
+               "connection_info": {
+                  "database_url": {
+                     "from_env": "CLINIC_DB"
+                  },
+                  "isolation_level": "read-committed",
+                  "use_prepared_statements": false
+               }
+            }
+         }
+      ]
+   }
+}
