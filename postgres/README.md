@@ -22,12 +22,4 @@ A docker compose file is supplied to run the demo locally.
 One database is required per distinct metadata instance. The `hdb_catalog` schema is created within each database.
 The `HASURA_GRAPHQL_METADATA_DATABASE_URL` environment variable points to the database instance to be used to store the Hasura GraphQL Engine (HGE) metadata.
 ### Front End
-This app includes a React frontend with multiple library dependencies
-
-## How to Use
-1. Run `docker compose up -d` to start the necessary containers
-2. Open [this HGE instance](http://localhost:8021/console/data/sql) and paste then execute the `data-init`/`clinic_data.sql` script to seed the data
-3. Import the `hge-metadata-<app_name>.json` files into each HGE app
-4. Run `npm install` to install frontend dependencies from `package.json` file
-5. Run `npm start` to run the React frontend
-6. Access the [main HGE app ](http://localhost:8020/console`) -- this Hasura app federates over all the separate services
+This app includes a React frontend with multiple library dependencies. Refer to root Readme for instructions.
