@@ -12,3 +12,6 @@ The healthcare federation demo is comprised of the following services:
     - the `hge-appts` GraphQL sub-graph (via Remote Schemas)
     - the `hge-records` GraphQL sub-graph (via Remote Schemas)
     - Remote Schemas-to-Remote Schema joins (via relationships)
+
+## Screenshot of Dashboard
+![screenshot](frontend/healthcare-dashboard/public/dashboard_screenshot.png)
