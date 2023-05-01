@@ -6,7 +6,7 @@ Healthcare database data model with federation used for SE demos
 2. Open [this HGE instance](http://localhost:8021/console/data/sql) and paste then execute the `data-init`/`clinic_data.sql` script to seed the data
 3. Import the `hge-metadata-<app_name>.json` files into each HGE app
 4. Run `npm install` to install frontend dependencies from `package.json` file
-5. Run `npm start` to run the React frontend
+5. Run `npm start` to run the React frontend. By default it should be viewable on [http://localhost:3000](http://localhost:3000)
 6. Access the [main HGE app ](http://localhost:8020/console`) -- this Hasura app federates over all the separate services
 
 ![screenshot](frontend/healthcare-dashboard/public/dashboard_screenshot.png)
