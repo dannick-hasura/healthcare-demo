@@ -1,5 +1,5 @@
 version: '3.6'
-name: pg-demo
+name: healthcare-demo-pg
 services:
    postgres:
       image: postgres
@@ -108,6 +108,7 @@ services:
          HASURA_FF_LOGICAL_MODEL_INTERFACE: 'True'
          HASURA_GRAPHQL_EXPERIMENTAL_FEATURES: streaming_subscriptions
          HASURA_GRAPHQL_CONSOLE_ASSETS_DIR: /srv/console-assets
+         CLINIC_DB: postgres://postgres:postgrespassword@postgres:5432/clinic_data
       healthcheck:
          test: bash -c ':> /dev/tcp/0.0.0.0/8080' || exit 1
          interval: 5s
@@ -140,6 +141,7 @@ services:
          HASURA_FF_LOGICAL_MODEL_INTERFACE: 'True'
          HASURA_GRAPHQL_EXPERIMENTAL_FEATURES: streaming_subscriptions
          HASURA_GRAPHQL_CONSOLE_ASSETS_DIR: /srv/console-assets
+         CLINIC_DB: postgres://postgres:postgrespassword@postgres:5432/clinic_data
       healthcheck:
          test: bash -c ':> /dev/tcp/0.0.0.0/8080' || exit 1
          interval: 5s
@@ -148,11 +150,15 @@ services:
    hge-appts:
       image: hasura/graphql-engine:latest
       ports:
-         - '8022:8080'
+         - '8023:8080'
       depends_on:
          postgres:
             condition: service_healthy
          redis:
+            condition: service_healthy
+         hge-doctors:
+            condition: service_healthy
+         hge-patients:
             condition: service_healthy
       restart: always
       environment:
@@ -172,6 +178,7 @@ services:
          HASURA_FF_LOGICAL_MODEL_INTERFACE: 'True'
          HASURA_GRAPHQL_EXPERIMENTAL_FEATURES: streaming_subscriptions
          HASURA_GRAPHQL_CONSOLE_ASSETS_DIR: /srv/console-assets
+         CLINIC_DB: postgres://postgres:postgrespassword@postgres:5432/clinic_data
       healthcheck:
          test: bash -c ':> /dev/tcp/0.0.0.0/8080' || exit 1
          interval: 5s
@@ -180,11 +187,15 @@ services:
    hge-records:
       image: hasura/graphql-engine:latest
       ports:
-         - '8022:8080'
+         - '8024:8080'
       depends_on:
          postgres:
             condition: service_healthy
          redis:
+            condition: service_healthy
+         hge-doctors:
+            condition: service_healthy
+         hge-patients:
             condition: service_healthy
       restart: always
       environment:
@@ -204,6 +215,7 @@ services:
          HASURA_FF_LOGICAL_MODEL_INTERFACE: 'True'
          HASURA_GRAPHQL_EXPERIMENTAL_FEATURES: streaming_subscriptions
          HASURA_GRAPHQL_CONSOLE_ASSETS_DIR: /srv/console-assets
+         CLINIC_DB: postgres://postgres:postgrespassword@postgres:5432/clinic_data
       healthcheck:
          test: bash -c ':> /dev/tcp/0.0.0.0/8080' || exit 1
          interval: 5s
