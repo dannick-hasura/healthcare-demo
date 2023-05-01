@@ -27,3 +27,10 @@ The healthcare federation demo is comprised of the following services:
 ## Front End
 The front end React application features a search bar and a displays appointment
 data from the `hge-main` service.
+
+### TODO
+[x] Build React frontend page for demo
+[ ] Include metadata management
+[ ] Shorten instructions and add `metadata apply`
+[ ] Expand frontend to use mutations, subscriptions, more data
+[ ] Make the frontend more pretty
